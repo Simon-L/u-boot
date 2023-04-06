@@ -50,6 +50,7 @@ const char *board_spl_was_booted_from(void)
 
 u32 spl_boot_device(void)
 {
+	debug("\nSIMONL spl_boot_device\n");
 	u32 boot_device = BOOT_DEVICE_MMC1;
 
 #if defined(CONFIG_TARGET_CHROMEBOOK_JERRY) || \
@@ -60,9 +61,12 @@ u32 spl_boot_device(void)
 		defined(CONFIG_TARGET_CHROMEBOOK_KEVIN)
 	return BOOT_DEVICE_SPI;
 #endif
-	if (CONFIG_IS_ENABLED(ROCKCHIP_BACK_TO_BROM))
+	if (CONFIG_IS_ENABLED(ROCKCHIP_BACK_TO_BROM)) {
+		debug("\nSIMONL back to brom\n");
 		return BOOT_DEVICE_BOOTROM;
+	}
 
+	debug("\nSIMONL return boot_device\n");
 	return boot_device;
 }
 

@@ -100,8 +100,10 @@ __weak const char *board_spl_was_booted_from(void)
 
 void board_boot_order(u32 *spl_boot_list)
 {
+	debug("\nSIMONL board_boot_order\n");
 	/* In case of no fdt (or only plat), use spl_boot_device() */
 	if (!CONFIG_IS_ENABLED(OF_CONTROL) || CONFIG_IS_ENABLED(OF_PLATDATA)) {
+		debug("\nSIMONL no dft or only plat\n");
 		spl_boot_list[0] = spl_boot_device();
 		return;
 	}
@@ -157,6 +159,7 @@ void board_boot_order(u32 *spl_boot_list)
 		spl_boot_list[idx++] = boot_device;
 	}
 
+	debug("\nSIMONL no matches fallback\n");
 	/* If we had no matches, fall back to spl_boot_device */
 	if (idx == 0)
 		spl_boot_list[0] = spl_boot_device();
