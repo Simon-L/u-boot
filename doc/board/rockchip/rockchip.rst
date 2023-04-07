@@ -121,6 +121,8 @@ To build TF-A:
 
 Specify the PLAT= with desired Rockchip platform to build TF-A for.
 
+Use PLAT=px30 if you build for rk3326, they are equivalent.
+
 U-Boot
 ^^^^^^
 
