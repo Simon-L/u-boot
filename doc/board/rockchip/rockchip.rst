@@ -193,6 +193,8 @@ Flashing
 1. Package the image with U-Boot TPL/SPL
 -----------------------------------------
 
+Note: If your device has an SPI flash and it is still factory-loaded with the Rockchip miniloader, this method won't work. See 2.
+
 SD Card
 ^^^^^^^
 
@@ -312,7 +314,8 @@ Create uboot.img [2]:
 Note:
 
 1. rkbin binaries are regularly updated, so it would be recommended to use the latest version.
-2. 0x200000 is a load address and is an option for some platforms.
+2. If this method doesn't work, connect UART at 1500000bps, boot the device and look for errors. A possible cause is a version mismatch with the miniloader version in the SPI flash, if your device has one.
+3. 0x200000 is a load address and is an option for some platforms.
 
 3. Package the RK3066 image with U-Boot TPL/SPL on NAND
 -------------------------------------------------------
